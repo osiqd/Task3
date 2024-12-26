@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" spacing="10" alignment="CENTER" fx:controller="com.example.observer.Controller">
+    <!-- Лейблы и кнопки -->
+    <Label fx:id="timeLabel" text="Текущий таймер: 0"/>
+    <Button fx:id="startButton" text="Начать"/>
+    <Button fx:id="stopButton" text="Остановить"/>
+    <Label fx:id="statusLabel" text="Статус: Неактивен"/>
+    <Label fx:id="animationStatusLabel" text=""/>
+
+    <!-- Круг для отображения анимации -->
+    <Circle fx:id="componentThreeCircle" radius="50" fill="blue"/>
+
+    <!-- Стрелка (линия), центрированная в круге -->
+    <Line fx:id="componentThreeHand"
+          startX="250" startY="250"
+          endX="250" endY="200"
+          stroke="black" strokeWidth="2"/>
+</VBox>

@@ -1,0 +1,83 @@
+@startuml
+class com.example.observer.ComponentThree {
+- Timeline colorAnimation
+- TranslateTransition moveAnimation
+- Rectangle animatedRectangle
+- Label animationStatusLabel
+- void createAnimations()
++ void update(Subject)
++ void stopAnimation()
+}
+
+
+interface com.example.observer.Subject {
+~ void notifyAllObservers()
+~ void attach(IObserver)
+~ void detach(IObserver)
+}
+
+class com.example.observer.ComponentOne {
+- Label timeLabel
++ void update(Subject)
+}
+
+
+class com.example.observer.Controller {
+- Label timeLabel
+- Button startButton
+- Button stopButton
+- Label statusLabel
+- Label animationStatusLabel
+- Rectangle componentThreeShape
+- TimeServer timeServer
+- ComponentOne componentOne
+- ComponentTwo componentTwo
+- ComponentThree componentThree
++ void initialize()
+}
+
+
+class com.example.observer.ComponentTwo {
+- Clip clip
+- boolean isPlaying
+- int musicStartDelay
+- int musicStartTime
++ void update(Subject)
+- void startMusic()
++ void stopMusic()
+}
+
+
+interface com.example.observer.IObserver {
+~ void update(Subject)
+}
+
+class com.example.observer.Main {
++ void start(Stage)
++ {static} void main(String[])
+}
+
+class com.example.observer.TimeServer {
+- List<IObserver> observers
+- int timeState
+- Timer timer
+- void tick()
++ int getState()
++ void setState(int)
++ void attach(IObserver)
++ void detach(IObserver)
++ void notifyAllObservers()
++ void start()
++ void stop()
++ boolean isRunning()
+}
+
+
+
+
+com.example.observer.IObserver <|.. com.example.observer.ComponentThree
+com.example.observer.IObserver <|.. com.example.observer.ComponentOne
+com.example.observer.IObserver <|.. com.example.observer.ComponentTwo
+javafx.application.Application <|-- com.example.observer.Main
+com.example.observer.Subject <|.. com.example.observer.TimeServer
+@enduml
